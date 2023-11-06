@@ -5551,12 +5551,12 @@ begin:
                 // FIXME-OPT: This is not optimal as do first do a search for \n before calling CalcWordWrapPosition().
                 // If the specs for CalcWordWrapPosition() were reworked to optionally return on \n we could combine both.
                 // However it is still better than nothing performing the fast-forward!
-                s = CalcWordWrapPosition(size, s, line_end ? line_end : text_end, wrap_width);
+                s = CalcWordWrapPosition(size, ImStrv(s, line_end), wrap_width);
                 s = CalcWordWrapNextLineStartA(s, text_end);
             }
             else
             {
-                s = line_end ? line_end + 1 : text.End;
+                s = line_end ? line_end + 1 : text_end;
             }
             y += line_height;
         }
