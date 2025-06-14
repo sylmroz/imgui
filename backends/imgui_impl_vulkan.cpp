@@ -1024,11 +1024,11 @@ static void ImGui_ImplVulkan_CreatePipeline(VkDevice device, const VkAllocationC
 #ifdef IMGUI_IMPL_VULKAN_HAS_DYNAMIC_RENDERING
     if (bd->VulkanInitInfo.UseDynamicRendering)
     {
-        VkPipelineRenderingCreateInfoKHR* pipelineRenderingCreateInfo = bd->Pipeline ? &bd->PipelineForViewportsRenderingCreateInfo : &bd->VulkanInitInfo.PipelineRenderingCreateInfo;
+        VkPipelineRenderingCreateInfoKHR* pipeline_rendering_create_info = bd->Pipeline ? &bd->PipelineForViewportsRenderingCreateInfo : &bd->VulkanInitInfo.PipelineRenderingCreateInfo;
         info.renderPass = VK_NULL_HANDLE; // Just make sure it's actually nullptr.
-        IM_ASSERT(pipelineRenderingCreateInfo->sType == VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR && "PipelineRenderingCreateInfo sType must be VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR");
-        IM_ASSERT(pipelineRenderingCreateInfo->pNext == nullptr && "PipelineRenderingCreateInfo pNext must be nullptr");
-        info.pNext = pipelineRenderingCreateInfo;
+        IM_ASSERT(pipeline_rendering_create_info->sType == VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR && "PipelineRenderingCreateInfo sType must be VK_STRUCTURE_TYPE_PIPELINE_RENDERING_CREATE_INFO_KHR");
+        IM_ASSERT(pipeline_rendering_create_info->pNext == nullptr && "PipelineRenderingCreateInfo pNext must be nullptr");
+        info.pNext = pipeline_rendering_create_info;
     }
 #endif
 
